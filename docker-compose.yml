@@ -10,6 +10,7 @@ services:
       - MARIADB_ROOT_PASSWORD=114514
   web:
     image: nanako7/ringo-django
+    restart: always
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./src:/usr/src/app
