@@ -5,7 +5,7 @@ services:
     image: mariadb
     restart: always
     volumes:
-      - ./data/db:/var/lib/postgresql/data
+      - ./db:/var/lib/mysql
     environment:
       - MARIADB_ROOT_PASSWORD=114514
   web:
