@@ -1,0 +1,21 @@
+version: "3.9"
+   
+services:
+  db:
+    image: mariadb
+    restart: always
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - MARIADB_ROOT_PASSWORD=114514
+  web:
+    image: nanako7/ringo-django
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./src:/usr/src/app
+    ports:
+      - "8000:8000"
+    environment:
+      - MARIADB_ROOT_PASSWORD=114514
+    depends_on:
+      - db
